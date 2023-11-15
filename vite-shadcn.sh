@@ -1698,6 +1698,12 @@ if [ -f "$APP_CSS_PATH" ]; then
     rm -f "$APP_CSS_PATH"
 fi
 
+APP__PATH="./app"
+
+# Check if App.css exists and is a regular file, then delete it
+if [ -f "$APP__PATH" ]; then
+    rm -f "$APP__PATH"
+fi
 
 
 
