@@ -1,8 +1,7 @@
-# senior-scene
+# Senior Scene
 
-```sh
-curl -sSL -o vite-shadcn.sh https://raw.githubusercontent.com/Ghassanooooo/senior-scene/main/vite-shadcn.sh
-chmod +x vite-shadcn.sh
-./vite-shadcn.sh
+To use Senior Scene, run the following command:
 
+```bash
+npx senior-scene@latest init
 ```
