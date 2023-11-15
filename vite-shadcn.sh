@@ -220,6 +220,8 @@ import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import { BrowserRouter } from "react-router-dom";
 import React from "react";
+import "./index.css";
+
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -247,7 +249,7 @@ import { Route, Routes } from "react-router-dom";
 import Navbar from "./components/examples/navbar";
 import Home from "./pages/home";
 import Footer from "./components/examples/footer";
-import "./App.css";
+
 import { ThemeProvider } from "./context/theme-context";
 function App() {
   return (
@@ -1701,15 +1703,15 @@ export function ThemeToggle() {
 EOF
 
 
-APP_CSS_PATH="./src/App.css"
+INDEX_CSS_PATH="./src/index.css"
 
-if [ ! -d "$APP_CSS_PATH" ]; then
-       touch "$APP_CSS_PATH"
+if [ ! -d "$INDEX_CSS_PATH" ]; then
+       touch "$INDEX_CSS_PATH"
 fi
 
 
 
-cat <<EOF > "$APP_CSS_PATH"
+cat <<EOF > "$INDEX_CSS_PATH"
 
 @tailwind base;
 @tailwind components;
@@ -1777,3 +1779,11 @@ cat <<EOF > "$APP_CSS_PATH"
 
 
 EOF
+
+
+APP_CSS_PATH="./src/App.css"
+
+# Check if App.css exists and is a regular file, then delete it
+if [ -f "$APP_CSS_PATH" ]; then
+    rm -f "$APP_CSS_PATH"
+fi
