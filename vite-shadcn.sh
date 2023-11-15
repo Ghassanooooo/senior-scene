@@ -1,17 +1,6 @@
 #!/bin/bash
 
-# Prompt the user for a project directory
-echo "Enter your project directory (e.g., './', 'my project'):"
-read project_dir
 
-# Replace spaces with slugs and trim input
-processed_dir=$(echo $project_dir | sed 's/ /-/g' | xargs)
-
-# Check if the directory is './', otherwise create a new directory
-if [ "$processed_dir" != "./" ]; then
-    mkdir -p "$processed_dir"
-    cd "$processed_dir"
-fi
 
 npm create vite@latest ./ -- --template react
 
