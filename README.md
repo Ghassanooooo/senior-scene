@@ -2,9 +2,7 @@
 
 To use Senior Scene:
 
-Create a new folder with your project name and change directory into it, and
-
-run the following command:
+Use the init command to initialize dependencies for a new project:
 
 ```bash
 npx senior-scene@latest init

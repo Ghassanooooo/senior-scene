@@ -1,11 +1,6 @@
 {
   "name": "senior-scene",
-  "install": {
-    "packageManager": "npx",
-    "skipMessage": true,
-    "skipExisting": true,
-    "installScript": "npx senior-scene@latest init"
-  },
+  "license": "MIT",
   "keywords": [
     "react",
     "vite",
@@ -15,7 +10,7 @@
     "components",
     "senior-scene"
   ],
-  "version": "1.1.02",
+  "version": "1.1.4",
   "description": "create new react vite app with shadcn ui and tailwind css install the shadcn components and add base folders and files",
   "main": "vite-shadcn.sh",
   "scripts": {
@@ -28,8 +23,10 @@
   "bin": {
     "senior-scene-init": "./vite-shadcn.sh"
   },
-  "author": "Ghassan Aldarwish",
-  "license": "ISC",
+  "author": {
+    "name": "Ghassan Aldarwish",
+    "url": "https://www.linkedin.com/in/ghassan-aldarwish-029682172"
+  },
   "bugs": {
     "url": "https://github.com/Ghassanooooo/senior-scene/issues"
   },
