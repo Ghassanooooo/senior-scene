@@ -212,7 +212,12 @@ import { DropdownMenuDemo } from "@/components/features/dropdown-menu";
 function Home() {
   return (
     <div className="grid grid-cols-4 gap-4 p-4">
-      <AlertDemo />
+
+      <div>
+         <AlertDemo />
+        <ContextMenuDemo />
+      </div>
+    
       <AccordionDemo />
 
       <div>
@@ -1369,7 +1374,7 @@ export function CalendarDemo() {
       mode="single"
       selected={date}
       onSelect={setDate}
-      className="rounded-md border"
+      className="rounded-md border w-fit h-fit"
     />
   );
 }
@@ -1441,7 +1446,7 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 export function AlertDemo() {
   return (
-    <Alert>
+    <Alert className="w-fit h-fit">
       <Terminal className=" w-4" />
       <AlertTitle>Heads up!</AlertTitle>
       <AlertDescription>
