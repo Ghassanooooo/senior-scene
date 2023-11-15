@@ -47,6 +47,7 @@ EOF
 # (so you can import "path" without error)
 npm i -D @types/node
 
+npm install lucide-react
 
 npx shadcn-ui@latest init
 
@@ -194,8 +195,6 @@ cat <<EOF > "$MAIN_PATH"
 
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
-
-import "./index.css";
 import { BrowserRouter } from "react-router-dom";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
@@ -224,10 +223,11 @@ import { Route, Routes } from "react-router-dom";
 import Navbar from "./components/navbar";
 import Home from "./pages/home";
 import Footer from "./components/footer";
-
+import "./App.css";
+import { ThemeProvider } from "./context/theme-context";
 function App() {
   return (
-    <>
+    <ThemeProvider>
       <Navbar />
       <div className="min-h-[92vh]">
         <Routes>
@@ -235,11 +235,12 @@ function App() {
         </Routes>
       </div>
       <Footer />
-    </>
+    </ThemeProvider>
   );
 }
 
 export default App;
+
 
 EOF
 
@@ -271,7 +272,77 @@ CONTEXT_PATH="./src/context"
 
 if [ ! -d "$CONTEXT_PATH" ]; then
     mkdir "$CONTEXT_PATH"
+    touch "$CONTEXT_PATH/theme-context.jsx"
 fi
+
+
+
+cat <<EOF > "$CONTEXT_PATH/theme-context.jsx"
+
+import { createContext, useContext, useEffect, useState } from "react";
+
+const initialState = {
+  theme: "system",
+  setTheme: () => null,
+};
+
+const ThemeProviderContext = createContext(initialState);
+
+export function ThemeProvider(componentsProps) {
+  const {
+    children,
+    defaultTheme = "system",
+    storageKey = "vite-ui-theme",
+    ...props
+  } = componentsProps;
+  const [theme, setTheme] = useState(
+    () => localStorage.getItem(storageKey) || defaultTheme
+  );
+
+  useEffect(() => {
+    const root = window.document.documentElement;
+
+    root.classList.remove("light", "dark");
+
+    if (theme === "system") {
+      const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
+        .matches
+        ? "dark"
+        : "light";
+
+      root.classList.add(systemTheme);
+      return;
+    }
+
+    root.classList.add(theme);
+  }, [theme]);
+
+  const value = {
+    theme,
+    setTheme: (theme) => {
+      localStorage.setItem(storageKey, theme);
+      setTheme(theme);
+    },
+  };
+
+  return (
+    <ThemeProviderContext.Provider {...props} value={value}>
+      {children}
+    </ThemeProviderContext.Provider>
+  );
+}
+
+export const useTheme = () => {
+  const context = useContext(ThemeProviderContext);
+
+  if (context === undefined)
+    throw new Error("useTheme must be used within a ThemeProvider");
+
+  return context;
+};
+
+
+EOF
 
 
 NAVBAR_PATH="./src/components/navbar.jsx"
@@ -286,12 +357,24 @@ cat <<EOF > "$NAVBAR_PATH"
 
 import { Link } from "react-router-dom";
 
+import { cn } from "@/lib/utils";
+import { buttonVariants } from "./ui/button";
+import { ThemeToggle } from "./theme-toggle";
+
 const Navbar = () => {
   return (
-    <nav className="border-b h-[4vh]">
+    <nav className="border-b h-[6vh] flex gap-4 justify-between px-4 items-center py-4">
       <ul className="flex justify-center gap-4">
         <li className="hover:text-blue-500 cursor-pointer">
-          <Link to="/">home</Link>
+          <Link className={cn(buttonVariants({ variant: "link" }))} to="/">
+            home
+          </Link>
+        </li>
+      </ul>
+
+      <ul className="flex justify-center gap-4">
+        <li className="hover:text-blue-500 cursor-pointer">
+          <ThemeToggle />
         </li>
       </ul>
     </nav>
@@ -299,6 +382,7 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
 
 EOF
 
@@ -316,5 +400,57 @@ cat <<EOF > "$FOOTER_PATH"
 export default function Footer() {
   return <footer className="h-[4vh] border-t bg-violet-800">footer</footer>;
 }
+
+EOF
+
+
+THEME_TOGGLE_PATH="./src/components/theme-toggle.jsx"
+
+if [ ! -d "$THEME_TOGGLE_PATH" ]; then
+       touch "$THEME_TOGGLE_PATH"
+fi
+
+
+
+cat <<EOF > "$THEME_TOGGLE_PATH"
+
+import { Moon, Sun } from "lucide-react"
+
+import { Button } from "@/components/ui/button"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+import { useTheme } from "@/context/theme-context"
+
+export function ThemeToggle() {
+  const { setTheme } = useTheme()
+
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="outline" size="icon">
+          <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+          <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+          <span className="sr-only">Toggle theme</span>
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end">
+        <DropdownMenuItem onClick={() => setTheme("light")}>
+          Light
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={() => setTheme("dark")}>
+          Dark
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={() => setTheme("system")}>
+          System
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  )
+}
+
 
 EOF
