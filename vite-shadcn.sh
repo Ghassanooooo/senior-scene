@@ -132,7 +132,6 @@ cat <<EOF > "$APP_PATH"
 import { Route, Routes } from "react-router-dom";
 import Navbar from "./components/examples/navbar";
 import Home from "./pages/home";
-import Footer from "./components/examples/footer";
 
 import { ThemeProvider } from "./context/theme-context";
 function App() {
@@ -144,7 +143,6 @@ function App() {
           <Route path="/" element={<Home />} />
         </Routes>
       </div>
-      <Footer />
     </ThemeProvider>
   );
 }
@@ -345,22 +343,6 @@ export default Navbar;
 
 EOF
 
-
-FOOTER_PATH="./src/components/examples/footer.jsx"
-
-if [ ! -d "$FOOTER_PATH" ]; then
-       touch "$FOOTER_PATH"
-fi
-
-
-
-cat <<EOF > "$FOOTER_PATH"
-
-export default function Footer() {
-  return <footer className="h-[4vh] border-t bg-violet-800">footer</footer>;
-}
-
-EOF
 
 
 DropdownMenu_PATH="./src/components/examples/dropdown-menu.jsx"
