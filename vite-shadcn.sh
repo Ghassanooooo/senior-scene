@@ -1,181 +1,320 @@
 #!/bin/bash
 
-npm create vite@latest ./ -- --template react
+# npm create vite@latest ./ -- --template react
 
-npm install
-
-
-npm install -D tailwindcss postcss autoprefixer
+# npm install
 
 
-npx tailwindcss init -p
-
-# This script appends Tailwind directives to App.css
-
-echo "@tailwind base;" >> ./src/App.css
-echo "@tailwind components;" >> ./src/App.css
-echo "@tailwind utilities;" >> ./src/App.css
-
-# This script updates jsconfig.json with specified compiler options
+# npm install -D tailwindcss postcss autoprefixer
 
 
+# npx tailwindcss init -p
 
-JSCONFIG_PATH="./jsconfig.json"
-if [ ! -f "$JSCONFIG_PATH" ]; then
-    echo '{"compilerOptions": {}}' > "$JSCONFIG_PATH"
+# # This script appends Tailwind directives to App.css
+
+# echo "@tailwind base;" >> ./src/App.css
+# echo "@tailwind components;" >> ./src/App.css
+# echo "@tailwind utilities;" >> ./src/App.css
+
+# # This script updates jsconfig.json with specified compiler options
+
+
+
+# JSCONFIG_PATH="./jsconfig.json"
+# if [ ! -f "$JSCONFIG_PATH" ]; then
+#     echo '{"compilerOptions": {}}' > "$JSCONFIG_PATH"
+# fi
+
+# # Read the current jsconfig.json, update it, and write back to the file
+# jq '.compilerOptions |= . + {"baseUrl": ".", "paths": {"@/*": ["src/*"]}}' "$JSCONFIG_PATH" > temp.json && mv temp.json "$JSCONFIG_PATH"
+
+
+# cat <<EOF > vite.config.js
+# import { defineConfig } from "vite";
+# import react from "@vitejs/plugin-react";
+# import path from "path";
+
+# // https://vitejs.dev/config/
+# export default defineConfig({
+#   plugins: [react()],
+#   resolve: {
+#     // eslint-disable-next-line no-undef
+#     alias: [{ find: "@", replacement: path.resolve(__dirname, "/src") }],
+#   },
+# });
+# EOF
+
+# # (so you can import "path" without error)
+# npm i -D @types/node
+
+
+# npx shadcn-ui@latest init
+
+
+# npx shadcn-ui@latest add accordion
+
+
+# npx shadcn-ui@latest add alert
+
+
+# npx shadcn-ui@latest add alert-dialog
+
+
+# npx shadcn-ui@latest add aspect-ratio
+
+
+
+# npx shadcn-ui@latest add avatar
+
+
+# npx shadcn-ui@latest add badge
+
+
+# npx shadcn-ui@latest add button
+
+
+
+# npx shadcn-ui@latest add calendar
+
+
+
+# npx shadcn-ui@latest add card
+
+
+# npx shadcn-ui@latest add checkbox
+
+
+
+# npx shadcn-ui@latest add collapsible
+
+
+
+
+# npx shadcn-ui@latest add command
+
+
+# npx shadcn-ui@latest add context-menu
+
+
+
+# npm install @tanstack/react-table
+
+
+
+# npx shadcn-ui@latest add dialog
+
+
+
+# npx shadcn-ui@latest add dropdown-menu
+
+
+
+# npx shadcn-ui@latest add form
+
+
+
+# npx shadcn-ui@latest add hover-card
+
+# npx shadcn-ui@latest add input
+
+
+
+# npx shadcn-ui@latest add label
+
+
+# npx shadcn-ui@latest add menubar
+
+
+# npx shadcn-ui@latest add navigation-menu
+
+
+# npx shadcn-ui@latest add popover
+
+
+# npx shadcn-ui@latest add progress
+
+
+# npx shadcn-ui@latest add radio-group
+
+
+# npx shadcn-ui@latest add scroll-area
+
+
+# npx shadcn-ui@latest add select
+
+
+# npx shadcn-ui@latest add separator
+
+
+# npx shadcn-ui@latest add sheet
+
+
+# npx shadcn-ui@latest add skeleton
+
+
+# npx shadcn-ui@latest add slider
+
+
+# npx shadcn-ui@latest add switch
+
+
+# npx shadcn-ui@latest add table
+
+
+# npx shadcn-ui@latest add tabs
+
+
+# npx shadcn-ui@latest add textarea
+
+
+# npx shadcn-ui@latest add toast
+
+
+# npx shadcn-ui@latest add toggle
+
+
+
+# npx shadcn-ui@latest add toggle-group
+
+
+# npx shadcn-ui@latest add tooltip
+
+# npm install react-router-dom
+
+
+MAIN_PATH="./src/main.jsx"
+
+if [ ! -d "$MAIN_PATH" ]; then
+    touch "$MAIN_PATH"
+
 fi
 
-# Read the current jsconfig.json, update it, and write back to the file
-jq '.compilerOptions |= . + {"baseUrl": ".", "paths": {"@/*": ["src/*"]}}' "$JSCONFIG_PATH" > temp.json && mv temp.json "$JSCONFIG_PATH"
 
+cat <<EOF > "$MAIN_PATH"
 
-cat <<EOF > vite.config.js
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
-import path from "path";
+import ReactDOM from "react-dom/client";
+import App from "./App.jsx";
 
-// https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [react()],
-  resolve: {
-    // eslint-disable-next-line no-undef
-    alias: [{ find: "@", replacement: path.resolve(__dirname, "/src") }],
-  },
-});
+import "./index.css";
+import { BrowserRouter } from "react-router-dom";
+
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </React.StrictMode>
+);
+
 EOF
 
-# (so you can import "path" without error)
-npm i -D @types/node
 
 
-npx shadcn-ui@latest init
+APP_PATH="./src/App.jsx"
 
+if [ ! -d "$APP_PATH" ]; then
+    touch "$APP_PATH"
 
-npx shadcn-ui@latest add accordion
+fi
 
 
-npx shadcn-ui@latest add alert
+cat <<EOF > "$APP_PATH"
 
+import { Route, Routes } from "react-router-dom";
+import Navbar from "./components/navbar";
+import Home from "./pages/home";
+import Footer from "./components/footer";
 
-npx shadcn-ui@latest add alert-dialog
+function App() {
+  return (
+    <>
+      <Navbar />
+      <div className="min-h-[92vh]">
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </div>
+      <Footer />
+    </>
+  );
+}
 
+export default App;
 
-npx shadcn-ui@latest add aspect-ratio
+EOF
 
 
 
-npx shadcn-ui@latest add avatar
+PAGES_PATH="./src/pages"
 
+if [ ! -d "$PAGES_PATH" ]; then
+    mkdir "$PAGES_PATH"
 
-npx shadcn-ui@latest add badge
+fi
 
+cat <<EOF > "$PAGES_PATH/home.jsx"
 
-npx shadcn-ui@latest add button
+function Home() {
 
+  return (
+    <div>
+     Home Page
+    </div>
+  )
+}
+export default Home
 
+EOF
 
-npx shadcn-ui@latest add calendar
 
+CONTEXT_PATH="./src/context"
 
+if [ ! -d "$CONTEXT_PATH" ]; then
+    mkdir "$CONTEXT_PATH"
+fi
 
-npx shadcn-ui@latest add card
 
+NAVBAR_PATH="./src/components/navbar.jsx"
 
-npx shadcn-ui@latest add checkbox
+if [ ! -d "$NAVBAR_PATH" ]; then
+       touch "$NAVBAR_PATH"
+fi
 
 
 
-npx shadcn-ui@latest add collapsible
+cat <<EOF > "$NAVBAR_PATH"
 
+import { Link } from "react-router-dom";
 
+const Navbar = () => {
+  return (
+    <nav className="border-b h-[4vh]">
+      <ul className="flex justify-center gap-4">
+        <li className="hover:text-blue-500 cursor-pointer">
+          <Link to="/">home</Link>
+        </li>
+      </ul>
+    </nav>
+  );
+};
 
+export default Navbar;
 
-npx shadcn-ui@latest add command
+EOF
 
 
-npx shadcn-ui@latest add context-menu
+FOOTER_PATH="./src/components/footer.jsx"
 
+if [ ! -d "$FOOTER_PATH" ]; then
+       touch "$FOOTER_PATH"
+fi
 
 
-npm install @tanstack/react-table
 
+cat <<EOF > "$FOOTER_PATH"
 
+export default function Footer() {
+  return <footer className="h-[4vh] border-t bg-violet-800">footer</footer>;
+}
 
-npx shadcn-ui@latest add dialog
-
-
-
-npx shadcn-ui@latest add dropdown-menu
-
-
-
-npx shadcn-ui@latest add form
-
-
-
-npx shadcn-ui@latest add hover-card
-
-npx shadcn-ui@latest add input
-
-
-
-npx shadcn-ui@latest add label
-
-
-npx shadcn-ui@latest add menubar
-
-
-npx shadcn-ui@latest add navigation-menu
-
-
-npx shadcn-ui@latest add popover
-
-
-npx shadcn-ui@latest add progress
-
-
-npx shadcn-ui@latest add radio-group
-
-
-npx shadcn-ui@latest add scroll-area
-
-
-npx shadcn-ui@latest add select
-
-
-npx shadcn-ui@latest add separator
-
-
-npx shadcn-ui@latest add sheet
-
-
-npx shadcn-ui@latest add skeleton
-
-
-npx shadcn-ui@latest add slider
-
-
-npx shadcn-ui@latest add switch
-
-
-npx shadcn-ui@latest add table
-
-
-npx shadcn-ui@latest add tabs
-
-
-npx shadcn-ui@latest add textarea
-
-
-npx shadcn-ui@latest add toast
-
-
-npx shadcn-ui@latest add toggle
-
-
-
-npx shadcn-ui@latest add toggle-group
-
-
-npx shadcn-ui@latest add tooltip
-
+EOF
