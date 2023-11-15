@@ -1,6 +1,6 @@
 {
   "name": "senior-scene",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "create new react vite app with shadcn ui and tailwind css install the shadcn components and add base folders and files",
   "main": "vite-shadcn.sh",
   "scripts": {
