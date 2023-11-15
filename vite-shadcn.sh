@@ -398,8 +398,8 @@ cat <<EOF > "$NAVBAR_PATH"
 import { Link } from "react-router-dom";
 
 import { cn } from "@/lib/utils";
-import { buttonVariants } from "./ui/button";
-import { ThemeToggle } from "./theme-toggle";
+import { buttonVariants } from "@/components/ui/button";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 const Navbar = () => {
   return (
@@ -407,7 +407,7 @@ const Navbar = () => {
       <ul className="flex justify-center gap-4">
         <li className="hover:text-blue-500 cursor-pointer">
           <Link className={cn(buttonVariants({ variant: "link" }))} to="/">
-            Senior Scene
+            home
           </Link>
         </li>
       </ul>
@@ -422,6 +422,7 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
 
 
 EOF
@@ -1097,7 +1098,7 @@ export function ContextMenuDemo() {
 EOF
 
 
-Command_PATH="./src/components/examples/Command.jsx"
+Command_PATH="./src/components/examples/command.jsx"
 
 if [ ! -d "$Command_PATH" ]; then
        touch "$Command_PATH"
@@ -1525,7 +1526,7 @@ EOF
 
 
 
-AlertDialog_PATH="./src/components/examples/alert.dialog.jsx"
+AlertDialog_PATH="./src/components/examples/alert-dialog.jsx"
 
 if [ ! -d "$AlertDialog_PATH" ]; then
        touch "$AlertDialog_PATH"
