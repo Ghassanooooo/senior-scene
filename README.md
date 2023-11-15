@@ -1,7 +1,5 @@
 # Senior Scene
 
-To use Senior Scene:
-
 Use the init command to initialize dependencies for a new project:
 
 ```bash
