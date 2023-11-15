@@ -106,8 +106,16 @@ components=("accordion" "alert" "alert-dialog" "aspect-ratio" "avatar" "badge"
 "toast" "toggle" "toggle-group" "tooltip")
 
 for component in "${components[@]}"; do
+    echo ""
+    echo -e "\033[1;36mAdding component: $component...\033[0m"
     npx shadcn-ui@latest add "$component"
+    echo -e "\033[1;32mComponent $component added successfully.\033[0m"
+    echo ""
 done
+
+echo ""
+echo -e "\033[1;32mAll components have been successfully added!\033[0m"
+echo ""
 
 npm install react-router-dom
 
