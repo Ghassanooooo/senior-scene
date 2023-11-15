@@ -6,6 +6,8 @@ Use the init command to initialize dependencies for a new project:
 npx senior-scene@latest init
 ```
 
+![Senior Scene logo](./public/images/logo.png)
+
 Run the following command to start the development server:
 
 ```bash
