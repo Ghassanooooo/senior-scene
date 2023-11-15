@@ -160,7 +160,7 @@ fi
 cat <<EOF > "$APP_PATH"
 
 import { Route, Routes } from "react-router-dom";
-import Navbar from "./components/examples/navbar";
+import Navbar from "./components/features/navbar";
 import Home from "./pages/home";
 
 import { ThemeProvider } from "./context/theme-context";
@@ -193,21 +193,21 @@ fi
 
 cat <<EOF > "$PAGES_PATH/home.jsx"
 
-import { AccordionDemo } from "@/components/examples/accordion";
-import { AlertDemo } from "@/components/examples/alert";
-import { AlertDialogDemo } from "@/components/examples/alert-dialog";
-import { AvatarDemo } from "@/components/examples/avatar";
-import { ButtonDemo } from "@/components/examples/button";
-import { CalendarDemo } from "@/components/examples/calendar";
-import { CardWithForm } from "@/components/examples/card";
-import { CollapsibleDemo } from "@/components/examples/collapsible";
-import { ComboboxDemo } from "@/components/examples/combobox";
-import { CommandDemo } from "@/components/examples/command";
-import { ContextMenuDemo } from "@/components/examples/context-menu";
-import { DataTableDemo } from "@/components/examples/data-table";
-import { DatePickerDemo } from "@/components/examples/date-picker";
-import { DialogDemo } from "@/components/examples/dialog";
-import { DropdownMenuDemo } from "@/components/examples/dropdown-menu";
+import { AccordionDemo } from "@/components/features/accordion";
+import { AlertDemo } from "@/components/features/alert";
+import { AlertDialogDemo } from "@/components/features/alert-dialog";
+import { AvatarDemo } from "@/components/features/avatar";
+import { ButtonDemo } from "@/components/features/button";
+import { CalendarDemo } from "@/components/features/calendar";
+import { CardWithForm } from "@/components/features/card";
+import { CollapsibleDemo } from "@/components/features/collapsible";
+import { ComboboxDemo } from "@/components/features/combobox";
+import { CommandDemo } from "@/components/features/command";
+import { ContextMenuDemo } from "@/components/features/context-menu";
+import { DataTableDemo } from "@/components/features/data-table";
+import { DatePickerDemo } from "@/components/features/date-picker";
+import { DialogDemo } from "@/components/features/dialog";
+import { DropdownMenuDemo } from "@/components/features/dropdown-menu";
 
 function Home() {
   return (
@@ -323,15 +323,15 @@ export const useTheme = () => {
 EOF
 
 
-EXAMPLES_PATH="./src/components/examples"
+features_PATH="./src/components/features"
 
-if [ ! -d "$EXAMPLES_PATH" ]; then
-       mkdir "$EXAMPLES_PATH"
+if [ ! -d "$features_PATH" ]; then
+       mkdir "$features_PATH"
 fi
 
 
 
-NAVBAR_PATH="./src/components/examples/navbar.jsx"
+NAVBAR_PATH="./src/components/features/navbar.jsx"
 
 if [ ! -d "$NAVBAR_PATH" ]; then
        touch "$NAVBAR_PATH"
@@ -375,7 +375,7 @@ EOF
 
 
 
-DropdownMenu_PATH="./src/components/examples/dropdown-menu.jsx"
+DropdownMenu_PATH="./src/components/features/dropdown-menu.jsx"
 
 if [ ! -d "$DropdownMenu_PATH" ]; then
        touch "$DropdownMenu_PATH"
@@ -512,7 +512,7 @@ export function DropdownMenuDemo() {
 EOF
 
 
-Dialog_PATH="./src/components/examples/dialog.jsx"
+Dialog_PATH="./src/components/features/dialog.jsx"
 
 if [ ! -d "$Dialog_PATH" ]; then
        touch "$Dialog_PATH"
@@ -582,7 +582,7 @@ export function DialogDemo() {
 EOF
 
 
-DatePicker_PATH="./src/components/examples/date-picker.jsx"
+DatePicker_PATH="./src/components/features/date-picker.jsx"
 
 if [ ! -d "$DatePicker_PATH" ]; then
        touch "$DatePicker_PATH"
@@ -638,7 +638,7 @@ export function DatePickerDemo() {
 EOF
 
 
-DataTable_PATH="./src/components/examples/data-table.jsx"
+DataTable_PATH="./src/components/features/data-table.jsx"
 
 if [ ! -d "$DataTable_PATH" ]; then
        touch "$DataTable_PATH"
@@ -946,7 +946,7 @@ export function DataTableDemo() {
 EOF
 
 
-ContextMenu_PATH="./src/components/examples/context-menu.jsx"
+ContextMenu_PATH="./src/components/features/context-menu.jsx"
 
 if [ ! -d "$ContextMenu_PATH" ]; then
        touch "$ContextMenu_PATH"
@@ -1028,7 +1028,7 @@ export function ContextMenuDemo() {
 EOF
 
 
-Command_PATH="./src/components/examples/command.jsx"
+Command_PATH="./src/components/features/command.jsx"
 
 if [ ! -d "$Command_PATH" ]; then
        touch "$Command_PATH"
@@ -1107,7 +1107,7 @@ EOF
 
 
 
-Combobox_PATH="./src/components/examples/combobox.jsx"
+Combobox_PATH="./src/components/features/combobox.jsx"
 
 if [ ! -d "$Combobox_PATH" ]; then
        touch "$Combobox_PATH"
@@ -1214,7 +1214,7 @@ EOF
 
 
 
-Collapsible_PATH="./src/components/examples/collapsible.jsx"
+Collapsible_PATH="./src/components/features/collapsible.jsx"
 
 if [ ! -d "$Collapsible_PATH" ]; then
        touch "$Collapsible_PATH"
@@ -1274,7 +1274,7 @@ EOF
 
 
 
-Card_PATH="./src/components/examples/card.jsx"
+Card_PATH="./src/components/features/card.jsx"
 
 if [ ! -d "$Card_PATH" ]; then
        touch "$Card_PATH"
@@ -1347,7 +1347,7 @@ EOF
 
 
 
-Calendar_PATH="./src/components/examples/calendar.jsx"
+Calendar_PATH="./src/components/features/calendar.jsx"
 
 if [ ! -d "$Calendar_PATH" ]; then
        touch "$Calendar_PATH"
@@ -1378,7 +1378,7 @@ export function CalendarDemo() {
 EOF
 
 
-Button_PATH="./src/components/examples/button.jsx"
+Button_PATH="./src/components/features/button.jsx"
 
 if [ ! -d "$Button_PATH" ]; then
        touch "$Button_PATH"
@@ -1398,7 +1398,7 @@ export function ButtonDemo() {
 EOF
 
 
-Avatar_PATH="./src/components/examples/avatar.jsx"
+Avatar_PATH="./src/components/features/avatar.jsx"
 
 if [ ! -d "$Avatar_PATH" ]; then
        touch "$Avatar_PATH"
@@ -1425,7 +1425,7 @@ EOF
 
 
 
-Alert_PATH="./src/components/examples/alert.jsx"
+Alert_PATH="./src/components/features/alert.jsx"
 
 if [ ! -d "$Alert_PATH" ]; then
        touch "$Alert_PATH"
@@ -1456,7 +1456,7 @@ EOF
 
 
 
-AlertDialog_PATH="./src/components/examples/alert-dialog.jsx"
+AlertDialog_PATH="./src/components/features/alert-dialog.jsx"
 
 if [ ! -d "$AlertDialog_PATH" ]; then
        touch "$AlertDialog_PATH"
@@ -1507,7 +1507,7 @@ EOF
 
 
 
-Accordion_PATH="./src/components/examples/accordion.jsx"
+Accordion_PATH="./src/components/features/accordion.jsx"
 
 if [ ! -d "$Accordion_PATH" ]; then
        touch "$Accordion_PATH"
@@ -1555,7 +1555,7 @@ export function AccordionDemo() {
 EOF
 
 
-# *************************END OF EXAMPLES*************************
+# *************************END OF features*************************
 
 THEME_TOGGLE_PATH="./src/components/theme-toggle.jsx"
 
