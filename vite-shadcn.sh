@@ -98,10 +98,6 @@ echo -e "\033[0m\033[36m Setup\033[0m the frontend components before start the d
 echo ""
 
 
-echo -e "\033[32m"
-echo -e "\033[0m\033[36m Setup\033[0m the frontend components before start the development environment."
-echo ""
-
 components=("accordion" "alert" "alert-dialog" "aspect-ratio" "avatar" "badge"
 "button" "calendar" "card" "checkbox" "collapsible" "command" "context-menu"
 "dialog" "dropdown-menu" "form" "hover-card" "input" "label" "menubar"
