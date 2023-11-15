@@ -1,6 +1,21 @@
 {
   "name": "senior-scene",
-  "version": "1.1.2",
+  "install": {
+    "packageManager": "npx",
+    "skipMessage": true,
+    "skipExisting": true,
+    "installScript": "npx senior-scene@latest init"
+  },
+  "keywords": [
+    "react",
+    "vite",
+    "shadcn",
+    "tailwind",
+    "css",
+    "components",
+    "senior-scene"
+  ],
+  "version": "1.1.02",
   "description": "create new react vite app with shadcn ui and tailwind css install the shadcn components and add base folders and files",
   "main": "vite-shadcn.sh",
   "scripts": {
