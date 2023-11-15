@@ -223,7 +223,6 @@ function Home() {
       <div>
         <ButtonDemo />
         <CollapsibleDemo />
-        <ContextMenuDemo />
       </div>
 
       <div>
@@ -1703,6 +1702,7 @@ fi
 
 
 # ASCII Art with color for "Finished Setup"
+echo ""
 echo -e "\033[31m███████╗██╗███╗   ██╗██╗███████╗██╗  ██╗███████╗██████╗ \033[0m"
 echo -e "\033[31m██╔════╝██║████╗  ██║██║██╔════╝██║  ██║██╔════╝██╔══██╗\033[0m"
 echo -e "\033[31m█████╗  ██║██╔██╗ ██║██║███████╗███████║█████╗  ██║  ██║\033[0m"
