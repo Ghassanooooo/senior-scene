@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# vite-shadcn.sh
 
 npm create vite@latest ./ -- --template react
 
