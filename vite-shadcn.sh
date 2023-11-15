@@ -13,7 +13,7 @@ npm install -D tailwindcss postcss autoprefixer
 
 npx tailwindcss init -p
 
-
+npx shadcn-ui@latest init
 
 # This script appends Tailwind directives to App.css
 
@@ -54,7 +54,8 @@ npm i -D @types/node
 
 npm install lucide-react
 
-npx shadcn-ui@latest init
+npm install react-router-dom
+
 
 
 # ASCII Art with color
@@ -203,7 +204,7 @@ npx shadcn-ui@latest add toggle-group
 
 npx shadcn-ui@latest add tooltip
 
-npm install react-router-dom
+
 
 
 MAIN_PATH="./src/main.jsx"
