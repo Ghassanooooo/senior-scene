@@ -302,23 +302,33 @@ function Home() {
     <div className="grid grid-cols-4 gap-4 p-4">
       <AlertDemo />
       <AccordionDemo />
-      <AlertDialogDemo />
-      <AvatarDemo />
-      <ButtonDemo />
+
+      <div>
+        <ButtonDemo />
+        <CollapsibleDemo />
+        <ContextMenuDemo />
+      </div>
+
+      <div>
+        <AvatarDemo />
+        <DropdownMenuDemo />
+        <DialogDemo />
+        <ComboboxDemo />
+        <DatePickerDemo />
+        <AlertDialogDemo />
+      </div>
+
       <CalendarDemo />
       <CardWithForm />
-      <CollapsibleDemo />
-      <ComboboxDemo />
+
       <CommandDemo />
-      <ContextMenuDemo />
+
       <DataTableDemo />
-      <DatePickerDemo />
-      <DialogDemo />
-      <DropdownMenuDemo />
     </div>
   );
 }
 export default Home;
+
 
 
 EOF
