@@ -16,4 +16,8 @@ Run the following command to start the development server:
 npm run dev
 ```
 
-[Live Demo](https://senior-scene-demo.vercel.app/)
+[Playground Live Demo](https://senior-scene-demo.vercel.app/)
+
+![Live Demo dark](./public/images/dark.png)
+
+![Live Demo light](./public/images/light.png)
