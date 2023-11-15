@@ -1,10 +1,10 @@
 {
   "name": "senior-scene",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "create new react vite app with shadcn ui and tailwind css install the shadcn components and add base folders and files",
   "main": "vite-shadcn.sh",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "postinstall": "echo 'Run npx senior-scene@latest init to start.'"
   },
   "repository": {
     "type": "git",
