@@ -429,7 +429,7 @@ const Navbar = () => {
       <ul className="flex justify-center gap-4">
         <li className="hover:text-blue-500 cursor-pointer">
           <Link className={cn(buttonVariants({ variant: "link" }))} to="/">
-            home
+            Senior Scene
           </Link>
         </li>
       </ul>
