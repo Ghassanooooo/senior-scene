@@ -15,3 +15,5 @@ Run the following command to start the development server:
 ```bash
 npm run dev
 ```
+
+[Live Demo](https://senior-scene-demo.vercel.app/)
