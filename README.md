@@ -46,6 +46,99 @@ This script is like a gourmet recipe for setting up a React project with Vite an
 10. **Themes and Toggles**: Because everyone loves a little customization, right?
 11. **Run, Forest, Run!**: Finally, `npm run dev` to bring your project to life. It's alive! 🧟‍♂️
 
+## Project structure
+
+```sh
+.
+├── node_modules/
+├── public/
+│   └── vite.svg
+└── src/
+    ├── assets/
+    │   └── react.svg
+    ├── components/
+    │   └── features/
+    │       ├── accordion.jsx
+    │       ├── alert-dialog.jsx
+    │       ├── alert.jsx
+    │       ├── avatar.jsx
+    │       ├── button.jsx
+    │       ├── calendar.jsx
+    │       ├── card.jsx
+    │       ├── collapsible.jsx
+    │       ├── combobox.jsx
+    │       ├── command.jsx
+    │       ├── context-menu.jsx
+    │       ├── data-table.jsx
+    │       ├── date-picker.jsx
+    │       ├── dialog.jsx
+    │       └── ... (more files)
+    │   └── ui/
+    │       ├── accordion.jsx
+    │       ├── alert-dialog.jsx
+    │       ├── alert.jsx
+    │       ├── aspect-ratio.jsx
+    │       ├── avatar.jsx
+    │       ├── badge.jsx
+    │       ├── button.jsx
+    │       ├── calendar.jsx
+    │       ├── card.jsx
+    │       ├── checkbox.jsx
+    │       ├── collapsible.jsx
+    │       ├── command.jsx
+    │       ├── context-menu.jsx
+    │       ├── dialog.jsx
+    │       ├── dropdown-menu.jsx
+    │       ├── form.jsx
+    │       ├── hover-card.jsx
+    │       ├── input.jsx
+    │       ├── label.jsx
+    │       ├── menubar.jsx
+    │       ├── navigation-menu.jsx
+    │       ├── popover.jsx
+    │       ├── progress.jsx
+    │       ├── radio-group.jsx
+    │       ├── scroll-area.jsx
+    │       ├── select.jsx
+    │       ├── separator.jsx
+    │       ├── sheet.jsx
+    │       ├── skeleton.jsx
+    │       ├── slider.jsx
+    │       ├── switch.jsx
+    │       ├── table.jsx
+    │       ├── tabs.jsx
+    │       ├── textarea.jsx
+    │       ├── toast.jsx
+    │       ├── toaster.jsx
+    │       ├── toggle-group.jsx
+    │       ├── toggle.jsx
+    │       ├── tooltip.jsx
+    │       └── use-toast.js
+    │   └── theme-toggle.jsx
+    ├── context/
+    │   └── theme-context.jsx
+    ├── lib/
+    │   └── utils.js
+    ├── pages/
+    │   ├── home.jsx
+    │   └── App.jsx
+    ├── index.css
+    ├── main.jsx
+    ├── .eslintrc.cjs
+    ├── .gitignore
+    ├── components.json
+    ├── index.html
+    ├── jsconfig.json
+    ├── package-lock.json
+    ├── package.json
+    ├── postcss.config.js
+    ├── README.md
+    ├── tailwind.config.js
+    └── vite.config.js
+
+
+```
+
 ## Conclusion
 
 And there you have it, folks! A complete setup for a front-end project that's as easy as baking a cake — maybe even easier if you're not good at baking. 🍰

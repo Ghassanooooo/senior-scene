@@ -1698,14 +1698,43 @@ if [ -f "$APP_CSS_PATH" ]; then
     rm -f "$APP_CSS_PATH"
 fi
 
-APP__PATH="./app"
+
+
+APPPATH="app"
 
 # Check if App.css exists and is a regular file, then delete it
-if [ -f "$APP__PATH" ]; then
-    rm -f "$APP__PATH"
+if [ -f "$APPPATH" ]; then
+    rm -f "$APPPATH"
+fi
+
+components_JSON_PATH="./components.json"
+
+if [ ! -d "$components_JSON_PATH" ]; then
+       touch "$components_JSON_PATH"
 fi
 
 
+
+cat <<EOF > "$components_JSON_PATH"
+
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "new-york",
+  "rsc": true,
+  "tsx": false,
+  "tailwind": {
+    "config": "tailwind.config.js",
+    "css": "./src/index.css",
+    "baseColor": "slate",
+    "cssVariables": true
+  },
+  "aliases": {
+    "components": "@/components",
+    "utils": "@/lib/utils"
+  }
+}
+
+EOF
 
 # ASCII Art with color for "Finished Setup"
 echo ""
@@ -1727,3 +1756,5 @@ echo -e "\033[34m╚══════╝╚══════╝   ╚═╝   
 echo -e "\033[32m"
 echo -e "\033[0mRun \033[36m'npm run dev'\033[0m to start the development environment."
 echo ""
+
+
