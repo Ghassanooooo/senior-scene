@@ -58,6 +58,41 @@ npm install @tanstack/react-table
 
 npx shadcn-ui@latest init 
 
+APPPATH="app"
+
+# Check if App.css exists and is a regular file, then delete it
+if [ -f "$APPPATH" ]; then
+    rm -f "$APPPATH"
+fi
+
+components_JSON_PATH="./components.json"
+
+if [ ! -d "$components_JSON_PATH" ]; then
+       touch "$components_JSON_PATH"
+fi
+
+
+
+cat <<EOF > "$components_JSON_PATH"
+
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "new-york",
+  "rsc": true,
+  "tsx": false,
+  "tailwind": {
+    "config": "tailwind.config.js",
+    "css": "./src/index.css",
+    "baseColor": "slate",
+    "cssVariables": true
+  },
+  "aliases": {
+    "components": "@/components",
+    "utils": "@/lib/utils"
+  }
+}
+
+EOF
 
 # ASCII Art with color
 display_art_with_colors() {
@@ -1700,41 +1735,7 @@ fi
 
 
 
-APPPATH="app"
 
-# Check if App.css exists and is a regular file, then delete it
-if [ -f "$APPPATH" ]; then
-    rm -f "$APPPATH"
-fi
-
-components_JSON_PATH="./components.json"
-
-if [ ! -d "$components_JSON_PATH" ]; then
-       touch "$components_JSON_PATH"
-fi
-
-
-
-cat <<EOF > "$components_JSON_PATH"
-
-{
-  "$schema": "https://ui.shadcn.com/schema.json",
-  "style": "new-york",
-  "rsc": true,
-  "tsx": false,
-  "tailwind": {
-    "config": "tailwind.config.js",
-    "css": "./src/index.css",
-    "baseColor": "slate",
-    "cssVariables": true
-  },
-  "aliases": {
-    "components": "@/components",
-    "utils": "@/lib/utils"
-  }
-}
-
-EOF
 
 # ASCII Art with color for "Finished Setup"
 echo ""
