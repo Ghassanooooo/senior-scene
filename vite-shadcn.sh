@@ -26,13 +26,26 @@ echo "@tailwind utilities;" >> ./src/App.css
 
 
 JSCONFIG_PATH="./jsconfig.json"
-if [ ! -f "$JSCONFIG_PATH" ]; then
+
+# Function to create a new jsconfig.json file with default compiler options if it doesn't exist
+create_jsconfig_if_not_exists() {
+  if [ ! -f "$JSCONFIG_PATH" ]; then
+    echo "Creating a new jsconfig.json file..."
     echo '{"compilerOptions": {}}' > "$JSCONFIG_PATH"
-fi
+  fi
+}
 
-# Read the current jsconfig.json, update it, and write back to the file
-jq '.compilerOptions |= . + {"baseUrl": ".", "paths": {"@/*": ["src/*"]}}' "$JSCONFIG_PATH" > temp.json && mv temp.json "$JSCONFIG_PATH"
+# Function to update the jsconfig.json with the desired compiler options
+update_jsconfig() {
+  echo "Updating jsconfig.json with baseUrl and paths..."
+  jq '.compilerOptions |= . + {"baseUrl": ".", "paths": {"@/*": ["src/*"]}}' "$JSCONFIG_PATH" > temp.json && mv temp.json "$JSCONFIG_PATH"
+}
 
+# Main execution
+create_jsconfig_if_not_exists
+update_jsconfig
+
+echo "jsconfig.json has been updated successfully."
 
 cat <<EOF > vite.config.js
 import { defineConfig } from "vite";
@@ -50,7 +63,7 @@ export default defineConfig({
 EOF
 
 # (so you can import "path" without error)
-npm i -D @types/node
+
 
 npm install lucide-react
 
@@ -97,6 +110,12 @@ echo -e "\033[32m"
 echo -e "\033[0m\033[36m Setup\033[0m the frontend components before start the development environment."
 echo ""
 
+COMPONENTS_PATH="./src/components"
+
+if [ ! -d "$COMPONENTS_PATH" ]; then
+    mkdir -p  "$COMPONENTS_PATH"
+
+fi
 
 components=("accordion" "alert" "alert-dialog" "aspect-ratio" "avatar" "badge"
 "button" "calendar" "card" "checkbox" "collapsible" "command" "context-menu"
