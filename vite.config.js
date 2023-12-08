@@ -15,7 +15,7 @@ export default defineConfig({
       entry: "src/index.js",
       name: "senior-scene",
       // the proper extensions will be added
-      fileName: "ui",
+      fileName: "index",
     },
     rollupOptions: {
       // make sure to externalize deps that shouldn't be bundled

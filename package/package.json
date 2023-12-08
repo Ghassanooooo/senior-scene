@@ -11,19 +11,24 @@
     "components",
     "senior-scene"
   ],
-  "exports": "./dist/ui.js",
+  "exports": "./dist/index.js",
   "files": [
-    "/dist"
+    "/dist",
+    "/build"
   ],
-  "version": "1.2.02",
+  "version": "1.2.04",
   "description": "create new react vite app with shadcn ui and tailwind css install the shadcn components and add base folders and files",
-  "main": "dist/ui.js",
+  "main": "dist/index.js",
   "scripts": {
     "postinstall": "echo 'Run npx senior-scene@latest init to start.'",
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "dev:cli": "tsup --watch",
+    "build:cli": "tsup",
+    "dev:start:cli": "concurrently \"pnpm dev:cli\" \"wait-on build/index.js && nodemon build/index.js\"",
+    "start:cli": "node build/index.js"
   },
   "dependencies": {
     "@radix-ui/react-icons": "^1.3.0",
@@ -37,7 +42,31 @@
     "senior-scene": "^1.2.2",
     "tailwind-merge": "^2.1.0",
     "tailwindcss": "^3.3.6",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "@antfu/ni": "^0.21.4",
+    "@babel/core": "^7.22.1",
+    "@babel/parser": "^7.22.6",
+    "@babel/plugin-transform-typescript": "^7.22.5",
+    "chalk": "5.2.0",
+    "chalk-animation": "^2.0.3",
+    "commander": "^10.0.0",
+    "cosmiconfig": "^8.1.3",
+    "diff": "^5.1.0",
+    "execa": "^7.0.0",
+    "figlet": "^1.7.0",
+    "fs-extra": "^11.1.0",
+    "gradient-string": "^2.0.2",
+    "https-proxy-agent": "^6.2.0",
+    "inquirer": "^9.2.12",
+    "lodash.template": "^4.5.0",
+    "nanospinner": "^1.1.0",
+    "node-fetch": "^3.3.0",
+    "ora": "^6.1.2",
+    "prompts": "^2.4.2",
+    "recast": "^0.23.2",
+    "ts-morph": "^18.0.0",
+    "tsconfig-paths": "^4.2.0",
+    "zod": "^3.20.2"
   },
   "devDependencies": {
     "@types/react": "^18.2.41",
@@ -47,14 +76,29 @@
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
-    "vite": "^5.0.4"
+    "vite": "^5.0.4",
+    "@types/babel__core": "^7.20.1",
+    "@types/chalk-animation": "^1.6.3",
+    "@types/diff": "^5.0.3",
+    "@types/figlet": "^1.5.8",
+    "@types/fs-extra": "^11.0.1",
+    "@types/gradient-string": "^1.1.5",
+    "@types/inquirer": "^9.0.7",
+    "@types/lodash.template": "^4.5.1",
+    "@types/prompts": "^2.4.2",
+    "concurrently": "^8.2.2",
+    "rimraf": "^4.1.3",
+    "tsup": "^6.6.3",
+    "type-fest": "^3.8.0",
+    "typescript": "^4.9.3",
+    "wait-on": "^7.2.0"
   },
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/Ghassanooooo/senior-scene.git"
   },
   "bin": {
-    "senior-scene": "dist/index.js"
+    "senior-scene": "build/index.js"
   },
   "author": {
     "name": "Ghassan Aldarwish",

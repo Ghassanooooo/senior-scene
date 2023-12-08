@@ -1,0 +1,6 @@
+#!/usr/bin/env node
+import f from"inquirer";import h from"chalk-animation";import{createSpinner as j}from"nanospinner";import{execa as t}from"execa";import i from"path";import{promises as c}from"fs";import{fileURLToPath as s}from"url";var p=s(import.meta.url),m=i.dirname(p),a={projectType:"Frontend",projectStack:"React + vite",projectPath:"./my-project"};async function l(n,o){try{await c.appendFile(n,o)}catch(r){console.error("Error appending to file:",r)}}async function u({projectPath:n}){try{let o="https://github.com/vitejs/vite.git",r="packages/create-vite/template-react",e=i.join(m,n);await t("git",["clone",o,"vite-temp"]),await t("cp",["-R",`vite-temp/${r}/.`,e]),await t("rm",["-rf","vite-temp"]),await t("mv",["_gitignore",".gitignore"],{cwd:e}),await t("npm",["install"],{cwd:e}),await t("npm",["install","tailwindcss","postcss","autoprefixer"],{cwd:e}),await t("rm",["-rf","src"],{cwd:e}),await t("mkdir",["src"],{cwd:e}),await t("touch",["index.css"],{cwd:e+"/src"}),await l(e+"/src/index.css",`@tailwind base;
+@tailwind components;
+@tailwind utilities;
+`),console.log("Template downloaded successfully")}catch(o){console.error("Error:",o)}}console.clear();async function w(){console.log("Program ==> ",a),u(a)}w();
+//# sourceMappingURL=index.js.map
